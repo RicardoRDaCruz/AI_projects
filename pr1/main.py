@@ -54,7 +54,7 @@ def Analisar():
 
 def Perguntar():
     file_content = extract_text_from_file(uploaded_file)
-    prompt=f"""Por favor, levando em conta o documento enviado, responda à pergunta em questão, caso a pergunta seguinte, caso a pergunta não se refira ao documento, diga apenas 'Pergunta não referente ao documento'.
+    prompt=f"""Por favor, levando em conta o documento enviado, responda à pergunta em questão, caso a pergunta não se refira ao documento, diga apenas 'Pergunta não referente ao documento'.
 
         Documento:
         {file_content}
