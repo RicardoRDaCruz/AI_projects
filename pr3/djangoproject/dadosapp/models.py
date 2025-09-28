@@ -18,6 +18,8 @@ class Acidente(models.Model):
     especie_que_mordeu = models.ForeignKey(Especie, on_delete=models.CASCADE)
     data_ocorrencia = models.DateTimeField("data ocorrência")
     sobreviveu = models.BooleanField()
+    longitude=models.FloatField(blank=True)
+    latitude=models.FloatField(blank=True)
 
     def __str__(self):
         return self.nome_acidentado

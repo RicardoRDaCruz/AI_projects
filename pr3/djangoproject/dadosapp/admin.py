@@ -8,7 +8,7 @@ class EspecieAdmin(admin.ModelAdmin):
 admin.site.register(Especie, EspecieAdmin)
 
 class AcidenteAdmin(admin.ModelAdmin):
-    list_display = ["nome_acidentado", "pais_de_ocorrencia", "especie_que_mordeu","data_ocorrencia","sobreviveu"]
+    list_display = ["nome_acidentado", "pais_de_ocorrencia", "especie_que_mordeu","data_ocorrencia","sobreviveu", "latitude", "longitude"]
     
 
 admin.site.register(Acidente, AcidenteAdmin)

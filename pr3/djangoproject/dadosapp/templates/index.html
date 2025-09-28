@@ -1,0 +1,13 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <title>TESTE</title>
+  </head>
+  <body>
+    <button onclick="myFunction()">Click me!</button>
+    {{map|safe}}
+  </body>
+  <script src="{% static 'main.js' %}"></script>
+</html>

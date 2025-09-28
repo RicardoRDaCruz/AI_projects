@@ -5,13 +5,15 @@ import time
 from google import genai
 from google.genai import types
 import pandas as pd
+import folium
 
 from django.http import HttpResponse
 from django.shortcuts import render
 from django.template import loader
+from django.views.generic import TemplateView
 from .models import *
 
-API_KEY=###################################
+API_KEY='AIzaSyAq6oRZRAT4oTRsY-rYgoF0hOBhywnz1ak'
 
 '''
 @api_view(['POST'])
@@ -24,7 +26,6 @@ def process_prompt(request):
 
     return Response({'response': response}, status=status.HTTP_200_OK)
 '''
-
 @api_view(['POST'])
 def process_prompt(request):
     acidentes_list = pd.DataFrame(list(Acidente.objects.all().values()))
@@ -56,8 +57,19 @@ def process_prompt(request):
 def index(request):
     acidentes_list = Acidente.objects.all()
     especies_list = Especie.objects.all()
+    # Make the map
+    map = folium.Map(
+        location = [-25.40, -40.78],
+        zoom_start = 7,
+        tiles = 'OpenStreetMap')
+    
+    for acidente in acidentes_list:
+        coordenadas=(acidente.latitude,acidente.longitude)
+        folium.Marker(coordenadas).add_to(map)
+
     context = {
         "acidentes_list": acidentes_list,
-        "especies_list": especies_list
+        "especies_list": especies_list,
+        "map": map._repr_html_(),
         }
-    return render(request, "html/index.html", context)
+    return render(request, "index.html", context)
