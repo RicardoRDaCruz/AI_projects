@@ -1,4 +1,6 @@
 {% load static %}
+
+{% csrf_token %}
 <!DOCTYPE html>
 <html lang="pt-BR">
   <head>
@@ -6,7 +8,17 @@
     <title>TESTE</title>
   </head>
   <body>
-    <button onclick="myFunction()">Click me!</button>
+    <button onclick="openPopup()">Abrir Form</button>
+    <div id="popupOverlay" style="display: none;">
+        <div id="popupContent">
+            <h2>Informação</h2>
+            <label for="infoInput">Info:</label>
+            <input type="text" id="infoInput" placeholder="Texto para IA">
+            <button onclick="submitForm()">Submeter</button>
+            <button onclick="closePopup()">Fechar</button>
+        </div>
+    </div>
+    <!--<button onclick="myFunction()">Click me!</button>-->
     {{map|safe}}
   </body>
   <script src="{% static 'main.js' %}"></script>
