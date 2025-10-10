@@ -16,7 +16,7 @@ from django.template import loader
 from django.views.generic import TemplateView
 from .models import *
 
-API_KEY=################################
+API_KEY=############################################
 
 '''
 @api_view(['POST'])
